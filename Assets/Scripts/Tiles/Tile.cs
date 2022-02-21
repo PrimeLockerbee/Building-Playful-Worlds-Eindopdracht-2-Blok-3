@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class Tile : MonoBehaviour
 {
-
-
     [SerializeField] private GameObject go_HighLight;
     [SerializeField] private GameObject go_MousePressed;
 
