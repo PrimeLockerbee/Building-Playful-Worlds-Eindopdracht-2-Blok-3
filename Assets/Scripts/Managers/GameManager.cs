@@ -5,11 +5,13 @@ using UnityEngine;
 
 public enum GameState
 {
-    PlayerTurn,
-    EnemyTurn,
-    Victory,
-    Death,
-    Pause
+    GenerateGrid = 0,
+    SpawnPlayer = 1,
+    SpawnEnemy = 2,
+    PlayerTurn = 3,
+    EnemyTurn = 4,
+    Victory = 5,
+    Death = 6
 }
 
 public class GameManager : MonoBehaviour
@@ -36,18 +38,23 @@ public class GameManager : MonoBehaviour
 
         switch (newState)
         {
+            case GameState.GenerateGrid:
+                GridManager.Instance.GenerateGrid();
+                break;
+            case GameState.SpawnPlayer:
+                
+                break;
+            case GameState.SpawnEnemy:
+
+                break;
             case GameState.PlayerTurn:
                 HandlePlayerTurn();
                 break;
             case GameState.EnemyTurn:
                 HandleEnemyTurn();
                 break;
-            case GameState.Victory:
-                break;
-            case GameState.Death:
-                break;
-            case GameState.Pause:
-                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
 
         OnGameStateChange?.Invoke(newState);
