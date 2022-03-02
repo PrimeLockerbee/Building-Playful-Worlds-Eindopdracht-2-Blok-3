@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class Tile : MonoBehaviour
@@ -8,6 +9,11 @@ public abstract class Tile : MonoBehaviour
     [SerializeField] private GameObject go_MousePressed;
 
     [SerializeField] protected SpriteRenderer sr_Renderer;
+
+    [SerializeField] private bool b_isWalkable;
+
+    public BaseUnit OccupiedUnit;
+    public bool b_Walkable => b_isWalkable && OccupiedUnit == null;
 
     public virtual void Init(int x, int y)
     {
@@ -32,5 +38,16 @@ public abstract class Tile : MonoBehaviour
     private void OnMouseUp()
     {
         go_MousePressed.SetActive(false);
+    }
+
+    public void SetUnit(BaseUnit unit)
+    {
+        if (unit.OccupiedTile != null)
+        {
+            unit.OccupiedTile.OccupiedUnit = null;
+        }
+        unit.transform.position = transform.position;
+        OccupiedUnit = unit;
+        unit.OccupiedTile = this;
     }
 }

@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateGameState(GameState.PlayerTurn);
+        UpdateGameState(GameState.GenerateGrid);
     }
 
     public void UpdateGameState(GameState newState)
@@ -42,31 +42,18 @@ public class GameManager : MonoBehaviour
                 GridManager.Instance.GenerateGrid();
                 break;
             case GameState.SpawnPlayer:
-                
+                UnitManager.Instance.SpawnPlayer();
                 break;
             case GameState.SpawnEnemy:
-
                 break;
             case GameState.PlayerTurn:
-                HandlePlayerTurn();
                 break;
             case GameState.EnemyTurn:
-                HandleEnemyTurn();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
 
         OnGameStateChange?.Invoke(newState);
-    }
-
-    private void HandlePlayerTurn()
-    {
-
-    }
-
-    private void HandleEnemyTurn()
-    {
-
     }
 }

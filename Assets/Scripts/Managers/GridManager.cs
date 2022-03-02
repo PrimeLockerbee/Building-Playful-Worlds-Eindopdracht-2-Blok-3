@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
@@ -13,7 +14,7 @@ public class GridManager : MonoBehaviour
 
     [SerializeField] private Transform t_MainCamera;
 
-    private Dictionary<Vector2, Tile> _tiles;
+    private Dictionary<Vector2, Tile> d_tiles;
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public class GridManager : MonoBehaviour
 
     public void GenerateGrid()
     {
-        _tiles = new Dictionary<Vector2, Tile>();
+        d_tiles = new Dictionary<Vector2, Tile>();
         for (int x = 0; x < _width; x++)
         {
             for (int y = 0; y < _height; y++)
@@ -33,18 +34,28 @@ public class GridManager : MonoBehaviour
 
                 spawnedTile.Init(x,y);
 
-                _tiles[new Vector2(x, y)] = spawnedTile;
+                d_tiles[new Vector2(x, y)] = spawnedTile;
             }
         }
 
-        t_MainCamera.transform.position = new Vector3((float)_width / 2 - 0.5f, (float)_height / 2 - 0.5f, -10);
+        t_MainCamera.transform.position = new Vector3((float)_width / 2 - 0.5f, (float)_height / 2 - 0.5f, -8);
 
         GameManager.Instance.UpdateGameState(GameState.SpawnPlayer);
     }
 
+    public Tile GetPlayerSpawnTile()
+    {
+        return d_tiles.Where(t => t.Key.x < _width && t.Value.b_Walkable).OrderBy(t => Random.value).First().Value;
+    }
+
+    public Tile GetEnemySpawnTile()
+    {
+        return d_tiles.Where(t => t.Key.x < _width && t.Value.b_Walkable).OrderBy(t => Random.value).First().Value;
+    }
+
     public Tile GetTileAtPosition(Vector2 pos)
     {
-        if (_tiles.TryGetValue(pos, out var tile))
+        if (d_tiles.TryGetValue(pos, out var tile))
         {
             return tile;
         }

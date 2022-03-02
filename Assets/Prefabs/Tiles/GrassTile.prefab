@@ -89,8 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c5b31bedfe93d48b13c8986a20f1d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  c_BaseColor: {r: 0.29123157, g: 0.6037736, b: 0.253471, a: 1}
-  c_OffsetColor: {r: 0.39933437, g: 0.7924528, b: 0.35510856, a: 1}
   go_HighLight: {fileID: 1557193048863039455}
   go_MousePressed: {fileID: 3311753074343662194}
   sr_Renderer: {fileID: 2044417204674094158}
+  b_isWalkable: 1
+  OccupiedUnit: {fileID: 0}
+  c_BaseColor: {r: 0.29123157, g: 0.6037736, b: 0.253471, a: 1}
+  c_OffsetColor: {r: 0.39933437, g: 0.7924528, b: 0.35510856, a: 1}

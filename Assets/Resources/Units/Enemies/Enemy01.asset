@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10038cca59c8f7f47a65b6e60e814329, type: 3}
   m_Name: Enemy01
   m_EditorClassIdentifier: 
-  Faction: 0
+  Faction: 1
+  UnitPrefab: {fileID: 3123616887827917014, guid: 382a6f26ce7aeeb4dbc70f7222d52f3f, type: 3}
