@@ -12,6 +12,8 @@ public abstract class Tile : MonoBehaviour
 
     [SerializeField] private bool b_isWalkable;
 
+    public string TileName;
+
     public BaseUnit OccupiedUnit;
     public bool b_Walkable => b_isWalkable && OccupiedUnit == null;
 
@@ -23,11 +25,13 @@ public abstract class Tile : MonoBehaviour
     private void OnMouseEnter()
     {
         go_HighLight.SetActive(true);
+        MenuManager.Instance.ShowTileInfo(this);
     }
 
     private void OnMouseExit()
     {
         go_HighLight.SetActive(false);
+        MenuManager.Instance.ShowTileInfo(null);
     }
 
     private void OnMouseDown()
@@ -40,7 +44,24 @@ public abstract class Tile : MonoBehaviour
         {
             if (OccupiedUnit.Faction == Faction.Player)
             {
-
+                UnitManager.Instance.SetSelectedPlayer((BasePlayer)OccupiedUnit);
+            }
+            else
+            {
+                if (UnitManager.Instance.SelectedPlayer != null)
+                {
+                    var enemy = (BaseEnemy)OccupiedUnit;
+                    Destroy(enemy.gameObject);
+                    UnitManager.Instance.SetSelectedPlayer(null);
+                }
+            }
+        }
+        else 
+        { 
+            if (UnitManager.Instance.SelectedPlayer != null)
+            {
+                SetUnit(UnitManager.Instance.SelectedPlayer);
+                UnitManager.Instance.SetSelectedPlayer(null);
             }
         }
     }

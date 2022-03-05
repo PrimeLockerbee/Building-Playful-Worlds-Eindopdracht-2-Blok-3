@@ -53,7 +53,8 @@ public class UnitManager : MonoBehaviour
 
     public void SetSelectedPlayer(BasePlayer player)
     {
-        
+        SelectedPlayer = player;
+        MenuManager.Instance.ShowSelectedPlayer(player);
     }
 
     private T GetRandomUnit<T>(Faction faction) where T : BaseUnit

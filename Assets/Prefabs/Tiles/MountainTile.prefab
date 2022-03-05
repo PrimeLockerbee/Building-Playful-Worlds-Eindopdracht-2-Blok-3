@@ -104,3 +104,6 @@ MonoBehaviour:
   go_HighLight: {fileID: 3026693510154711735}
   go_MousePressed: {fileID: 1326607758019002138}
   sr_Renderer: {fileID: 2577046315711842598}
+  b_isWalkable: 0
+  TileName: Mountain
+  OccupiedUnit: {fileID: 0}

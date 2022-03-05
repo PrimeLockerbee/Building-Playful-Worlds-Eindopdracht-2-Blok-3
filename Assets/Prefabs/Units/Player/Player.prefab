@@ -95,4 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad692676088629b40b8bc343c8a4befe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitName: Bread Boy
   OccupiedTile: {fileID: 0}
+  Faction: 0
