@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
                 UnitManager.Instance.SpawnPlayer();
                 break;
             case GameState.SpawnEnemy:
+                UnitManager.Instance.SpawnEnemy();
                 break;
             case GameState.PlayerTurn:
                 break;

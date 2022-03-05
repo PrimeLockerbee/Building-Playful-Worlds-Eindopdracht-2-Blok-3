@@ -33,11 +33,23 @@ public abstract class Tile : MonoBehaviour
     private void OnMouseDown()
     {
         go_MousePressed.SetActive(true);
+
+        if(GameManager.Instance.State != GameState.PlayerTurn) return;
+
+        if (OccupiedUnit != null)
+        {
+            if (OccupiedUnit.Faction == Faction.Player)
+            {
+
+            }
+        }
     }
 
     private void OnMouseUp()
     {
         go_MousePressed.SetActive(false);
+
+
     }
 
     public void SetUnit(BaseUnit unit)
