@@ -5,6 +5,7 @@ using UnityEngine;
 public class BaseUnit : MonoBehaviour
 {
     public string UnitName;
+    public int MovementRange;
     public Tile OccupiedTile;
     public Faction Faction;
 }

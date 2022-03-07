@@ -58,7 +58,7 @@ public abstract class Tile : MonoBehaviour
         }
         else 
         { 
-            if (UnitManager.Instance.SelectedPlayer != null)
+            if (UnitManager.Instance.SelectedPlayer != null && b_isWalkable == true)
             {
                 SetUnit(UnitManager.Instance.SelectedPlayer);
                 UnitManager.Instance.SetSelectedPlayer(null);
