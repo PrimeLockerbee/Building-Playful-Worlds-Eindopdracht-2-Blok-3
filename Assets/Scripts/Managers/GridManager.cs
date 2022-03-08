@@ -12,7 +12,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private int _width;
     [SerializeField] private int _height;
 
-    [SerializeField] private Transform t_MainCamera;
+
 
     private Dictionary<Vector2, Tile> d_tiles;
 
@@ -37,8 +37,6 @@ public class GridManager : MonoBehaviour
                 d_tiles[new Vector2(x, y)] = spawnedTile;
             }
         }
-
-        t_MainCamera.transform.position = new Vector3((float)_width / 2 - 0.5f, (float)_height / 2 - 0.5f, -8);
 
         GameManager.Instance.UpdateGameState(GameState.SpawnPlayer);
     }
