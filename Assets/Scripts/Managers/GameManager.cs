@@ -48,8 +48,10 @@ public class GameManager : MonoBehaviour
                 UnitManager.Instance.SpawnEnemy();
                 break;
             case GameState.PlayerTurn:
+
                 break;
             case GameState.EnemyTurn:
+
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);

@@ -44,7 +44,7 @@ public abstract class Tile : MonoBehaviour
         {
             if (OccupiedUnit.Faction == Faction.Player)
             {
-                UnitManager.Instance.SetSelectedPlayer((BasePlayer)OccupiedUnit);
+                UnitManager.Instance.SetSelectedPlayer((Player)OccupiedUnit);
             }
             else
             {
@@ -69,8 +69,6 @@ public abstract class Tile : MonoBehaviour
     private void OnMouseUp()
     {
         go_MousePressed.SetActive(false);
-
-
     }
 
     public void SetUnit(BaseUnit unit)

@@ -17,7 +17,7 @@ public class MenuManager : MonoBehaviour
         Instance = this;
     }
 
-    public void ShowSelectedPlayer(BasePlayer player)
+    public void ShowSelectedPlayer(Player player)
     {
         if (player == null)
         {

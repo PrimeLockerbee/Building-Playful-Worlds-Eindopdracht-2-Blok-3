@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 829554427851558257}
   - component: {fileID: 829554427851558256}
-  - component: {fileID: 829554427851558271}
+  - component: {fileID: 7786850017581112752}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &829554427851558271
+--- !u!114 &7786850017581112752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,10 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: Bread Boy
-  MovementRange: 6
+  MovementRange: 0
   OccupiedTile: {fileID: 0}
   Faction: 0
-  t_MainCamera: {fileID: 0}
 --- !u!1001 &5627860459414488388
 PrefabInstance:
   m_ObjectHideFlags: 0
