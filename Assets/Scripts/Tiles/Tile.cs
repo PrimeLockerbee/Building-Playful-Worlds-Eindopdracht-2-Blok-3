@@ -14,8 +14,15 @@ public abstract class Tile : MonoBehaviour
 
     public string TileName;
 
+    public Vector2 v2_Coords;
+
     public BaseUnit OccupiedUnit;
     public bool b_Walkable => b_isWalkable && OccupiedUnit == null;
+
+    public void Awake()
+    {
+        v2_Coords = new Vector2(transform.position.x, transform.position.y);
+    }
 
     public virtual void Init(int x, int y)
     {

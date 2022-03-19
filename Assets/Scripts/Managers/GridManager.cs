@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System.IO;
 
 public class GridManager : MonoBehaviour
 {
@@ -49,13 +50,13 @@ public class GridManager : MonoBehaviour
         return d_tiles.Where(t => t.Key.x < _width && t.Value.b_Walkable).OrderBy(t => Random.value).First().Value;
     }
 
-    //public Tile GetTileAtPosition(Vector2 pos)
-    //{
-    //    if (d_tiles.TryGetValue(pos, out var tile))
-    //    {
-    //        return tile;
-    //    }
+    public Tile GetTileAtPosition(Vector2 pos)
+    {
+        if (d_tiles.TryGetValue(pos, out var tile))
+        {
+            return tile;
+        }
 
-    //    return null;
-    //}
+        return null;
+    }
 }

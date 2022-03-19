@@ -11,6 +11,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject go_SelectedPlayerObject;
     [SerializeField] private GameObject go_TileObject;
     [SerializeField] private GameObject go_TileUnitObject;
+    [SerializeField] private GameObject go_TileCoordsObject;
 
     private void Awake()
     {
@@ -35,11 +36,15 @@ public class MenuManager : MonoBehaviour
         {
             go_TileObject.SetActive(false);
             go_TileUnitObject.SetActive(false);
+            go_TileCoordsObject.SetActive(false);
             return;
         }
 
         go_TileObject.GetComponentInChildren<TextMeshProUGUI>().text = tile.TileName;
+        go_TileCoordsObject.GetComponentInChildren<TextMeshProUGUI>().text = tile.v2_Coords.ToString();
+
         go_TileObject.SetActive(true);
+        go_TileCoordsObject.SetActive(true);
 
         if (tile.OccupiedUnit)
         {

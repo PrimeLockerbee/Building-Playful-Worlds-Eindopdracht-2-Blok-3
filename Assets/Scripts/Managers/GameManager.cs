@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public enum GameState
 {
@@ -14,6 +15,8 @@ public enum GameState
     Death = 6
 }
 
+
+[System.Serializable]
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -58,5 +61,15 @@ public class GameManager : MonoBehaviour
         }
 
         OnGameStateChange?.Invoke(newState);
+    }
+
+    private void Save()
+    {
+
+    }
+
+    private void Load()
+    {
+
     }
 }
