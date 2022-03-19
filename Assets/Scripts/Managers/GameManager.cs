@@ -10,9 +10,9 @@ public enum GameState
     SpawnPlayer = 1,
     SpawnEnemy = 2,
     PlayerTurn = 3,
-    EnemyTurn = 4,
-    Victory = 5,
-    Death = 6
+    Enemy1Turn = 4,
+    Enemy2Turn = 5,
+    Victory = 6,
 }
 
 
@@ -51,10 +51,13 @@ public class GameManager : MonoBehaviour
                 UnitManager.Instance.SpawnEnemy();
                 break;
             case GameState.PlayerTurn:
-
                 break;
-            case GameState.EnemyTurn:
-
+            case GameState.Enemy1Turn:
+                //GridManager.Instance.GetTile();
+                break;
+            case GameState.Enemy2Turn:
+                break;
+            case GameState.Victory:
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);

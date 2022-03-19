@@ -8,7 +8,7 @@ public class GridManager : MonoBehaviour
 {
     public static GridManager Instance;
 
-    [SerializeField] private Tile _GrassTile, _MountainTile;
+    [SerializeField] private Tile _GrassTile;
 
     [SerializeField] private int _width;
     [SerializeField] private int _height;
@@ -27,7 +27,7 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < _height; y++)
             {
-                var randomTile = Random.Range(0, 6) == 3 ? _MountainTile : _GrassTile;
+                var randomTile = _GrassTile;
                 var spawnedTile = Instantiate(randomTile, new Vector3(x, y), Quaternion.identity);
                 spawnedTile.name = $"Tile: {x}, {y}";
 
@@ -49,6 +49,15 @@ public class GridManager : MonoBehaviour
     {
         return d_tiles.Where(t => t.Key.x < _width && t.Value.b_Walkable).OrderBy(t => Random.value).First().Value;
     }
+
+    //public void GetTile()
+    //{
+    //    foreach (KeyValuePair<Vector2, Tile> keyValue in d_tiles)
+    //    {
+    //        Vector2 key = keyValue.Key;
+    //    }
+    //}
+
 
     public Tile GetTileAtPosition(Vector2 pos)
     {

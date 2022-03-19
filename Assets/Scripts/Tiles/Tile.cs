@@ -45,7 +45,7 @@ public abstract class Tile : MonoBehaviour
     {
         go_MousePressed.SetActive(true);
 
-        if(GameManager.Instance.State != GameState.PlayerTurn) return;
+        if (GameManager.Instance.State != GameState.PlayerTurn) return;
 
         if (OccupiedUnit != null)
         {
@@ -63,14 +63,17 @@ public abstract class Tile : MonoBehaviour
                 }
             }
         }
-        else 
-        { 
+        else
+        {
             if (UnitManager.Instance.SelectedPlayer != null && b_isWalkable == true)
             {
                 SetUnit(UnitManager.Instance.SelectedPlayer);
                 UnitManager.Instance.SetSelectedPlayer(null);
+                GameManager.Instance.UpdateGameState(GameState.Enemy1Turn);
             }
         }
+
+
     }
 
     private void OnMouseUp()

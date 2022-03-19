@@ -547,9 +547,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _GrassTile: {fileID: 7702573823203181296, guid: 79c2b7370d0faab4c9d9682c14ba3d86, type: 3}
-  _MountainTile: {fileID: 9167183239421568927, guid: 40e528d1c1341ad49a89a9447dafab7e, type: 3}
-  _width: 32
-  _height: 18
+  _width: 10
+  _height: 10
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,7 +948,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986530341}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 099e557ef6821d14f82ccb52c6726d06, type: 3}
