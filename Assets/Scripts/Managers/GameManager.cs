@@ -53,9 +53,18 @@ public class GameManager : MonoBehaviour
             case GameState.PlayerTurn:
                 break;
             case GameState.Enemy1Turn:
-                //GridManager.Instance.GetTile();
+                if (Enemy01.Instance == null)
+                {
+                    UpdateGameState(GameState.Enemy2Turn);
+                }
+                Enemy01.Instance.MoveEnemy1();
                 break;
             case GameState.Enemy2Turn:
+                if (Enemy02.Instance == null)
+                {
+                    UpdateGameState(GameState.PlayerTurn);
+                }
+                Enemy02.Instance.MoveEnemy2();
                 break;
             case GameState.Victory:
                 break;

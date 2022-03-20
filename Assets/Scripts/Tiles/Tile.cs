@@ -54,6 +54,7 @@ public abstract class Tile : MonoBehaviour
         go_MousePressed.SetActive(false);
     }
 
+    //Moves the Player and allows you to destroy enemies
     void MovePlayer()
     {
         if (GameManager.Instance.State != GameState.PlayerTurn) return;
@@ -72,6 +73,7 @@ public abstract class Tile : MonoBehaviour
                     Destroy(enemy.gameObject);
                     UnitManager.Instance.SetSelectedPlayer(null);
                 }
+                GameManager.Instance.UpdateGameState(GameState.Enemy1Turn);
             }
         }
         else
@@ -85,26 +87,33 @@ public abstract class Tile : MonoBehaviour
         }
     }
 
-    void MoveEnemy1()
-    {
-        if (GameManager.Instance.State != GameState.Enemy1Turn) return;
 
-        //Get Enemy Position
-        //Get tile next to enemy position
-        //tile.SetUnit(Enemy1)
-
-
-        GameManager.Instance.UpdateGameState(GameState.Enemy2Turn);
-    }
-
-    void MoveEnemy2()
-    {
-        if (GameManager.Instance.State != GameState.Enemy2Turn) return;
-
-        GameManager.Instance.UpdateGameState(GameState.Enemy1Turn);
-    }
-
+    //Sets the Unit to the tile
     public void SetUnit(BaseUnit unit)
+    {
+        if (unit.OccupiedTile != null)
+        {
+            unit.OccupiedTile.OccupiedUnit = null;
+        }
+        unit.transform.position = transform.position;
+        OccupiedUnit = unit;
+        unit.OccupiedTile = this;
+    }
+
+    //Variant of SetUnit but sets the first enemy to the tile
+    public void SetEnemy1(Enemy01 unit)
+    {
+        if (unit.OccupiedTile != null)
+        {
+            unit.OccupiedTile.OccupiedUnit = null;
+        }
+        unit.transform.position = transform.position;
+        OccupiedUnit = unit;
+        unit.OccupiedTile = this;
+    }
+
+    //Variant of SetUnit but sets the second enemy to the tile
+    public void SetEnemy2(Enemy02 unit)
     {
         if (unit.OccupiedTile != null)
         {

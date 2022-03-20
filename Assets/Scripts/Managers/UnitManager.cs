@@ -9,7 +9,12 @@ public class UnitManager : MonoBehaviour
 
     private List<ScriptableUnit> l_units;
 
+    private List<Enemy01> l_Enemy01;
+
     public Player SelectedPlayer;
+
+    [SerializeField] GameObject go_Enemy1;
+    [SerializeField] GameObject go_Enemy2;
 
     void Awake()
     {

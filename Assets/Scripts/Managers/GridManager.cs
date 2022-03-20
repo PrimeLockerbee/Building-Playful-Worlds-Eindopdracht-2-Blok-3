@@ -50,6 +50,16 @@ public class GridManager : MonoBehaviour
         return d_tiles.Where(t => t.Key.x < _width && t.Value.b_Walkable).OrderBy(t => Random.value).First().Value;
     }
 
+    public Tile GetRandomTileWidth()
+    {
+        return d_tiles.Where(t => t.Key.y < _height && t.Value.b_Walkable).OrderBy(t => Random.value).First().Value;
+    }
+
+    public Tile GetRandomTileHeigth()
+    {
+        return d_tiles.Where(t => t.Key.x < _width && t.Value.b_Walkable).OrderBy(t => Random.value).First().Value;
+    }
+
     //public void GetTile()
     //{
     //    foreach (KeyValuePair<Vector2, Tile> keyValue in d_tiles)
