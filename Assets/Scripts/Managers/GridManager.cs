@@ -20,6 +20,8 @@ public class GridManager : MonoBehaviour
         Instance = this;
     }
 
+    //Generates a grid with random tiles
+    //If there is more time available more tiles will be added
     public void GenerateGrid()
     {
         d_tiles = new Dictionary<Vector2, Tile>();
@@ -40,42 +42,27 @@ public class GridManager : MonoBehaviour
         GameManager.Instance.UpdateGameState(GameState.SpawnPlayer);
     }
 
+    //Gets a random Tile anywhere on the grid to spawn the player on
     public Tile GetPlayerSpawnTile()
     {
         return d_tiles.Where(t => t.Key.x < _width && t.Value.b_Walkable).OrderBy(t => Random.value).First().Value;
     }
 
+    //Gets a random Tile anywhere on the grid to spawn the enemies on
     public Tile GetEnemySpawnTile()
     {
         return d_tiles.Where(t => t.Key.x < _width && t.Value.b_Walkable).OrderBy(t => Random.value).First().Value;
     }
 
-    public Tile GetRandomTileWidth()
+    //Gets a random tile at the lower half of the grid to spawn enemies on
+    public Tile GetBottomRandomTile()
     {
-        return d_tiles.Where(t => t.Key.y < _height && t.Value.b_Walkable).OrderBy(t => Random.value).First().Value;
+        return d_tiles.Where(t => t.Key.y < _height / 2 && t.Value.b_Walkable).OrderBy(t => Random.value).First().Value;
     }
 
-    public Tile GetRandomTileHeigth()
+    //Gets a random tile at the upper half of the grid to spawn enemies on
+    public Tile GetUpperRandomTile()
     {
-        return d_tiles.Where(t => t.Key.x < _width && t.Value.b_Walkable).OrderBy(t => Random.value).First().Value;
-    }
-
-    //public void GetTile()
-    //{
-    //    foreach (KeyValuePair<Vector2, Tile> keyValue in d_tiles)
-    //    {
-    //        Vector2 key = keyValue.Key;
-    //    }
-    //}
-
-
-    public Tile GetTileAtPosition(Vector2 pos)
-    {
-        if (d_tiles.TryGetValue(pos, out var tile))
-        {
-            return tile;
-        }
-
-        return null;
+        return d_tiles.Where(t => t.Key.y > _height/2 && t.Value.b_Walkable).OrderBy(t => Random.value).First().Value;
     }
 }

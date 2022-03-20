@@ -12,10 +12,6 @@ public class UnitManager : MonoBehaviour
     private List<Enemy01> l_Enemy01;
 
     public Player SelectedPlayer;
-
-    [SerializeField] GameObject go_Enemy1;
-    [SerializeField] GameObject go_Enemy2;
-
     void Awake()
     {
         Instance = this;
@@ -24,6 +20,7 @@ public class UnitManager : MonoBehaviour
 
     }
 
+    //Gets a random unit from the player faction and spawns it, for if you want more then one player
     public void SpawnPlayer()
     {
         var playerCount = 1;
@@ -40,9 +37,10 @@ public class UnitManager : MonoBehaviour
         GameManager.Instance.UpdateGameState(GameState.SpawnEnemy);
     }
 
+    //Picks an enemy from the enemy faction and spawns it.
     public void SpawnEnemy()
     {
-        var enemyCount = 5;
+        var enemyCount = 10;
 
         for (int i = 0; i < enemyCount; i++)
         {
@@ -62,6 +60,7 @@ public class UnitManager : MonoBehaviour
         MenuManager.Instance.ShowSelectedPlayer(player);
     }
 
+    //Gets a random Unit
     private T GetRandomUnit<T>(Faction faction) where T : BaseUnit
     {
         return (T)l_units.Where(u => u.Faction == faction).OrderBy(o => Random.value).First().UnitPrefab;

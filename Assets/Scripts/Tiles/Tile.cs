@@ -31,18 +31,21 @@ public abstract class Tile : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        //Activates highlight and shows the tile info
         go_HighLight.SetActive(true);
         MenuManager.Instance.ShowTileInfo(this);
     }
 
     private void OnMouseExit()
     {
+        //Deactivates highlight and shows the tile info
         go_HighLight.SetActive(false);
         MenuManager.Instance.ShowTileInfo(null);
     }
 
     private void OnMouseDown()
     {
+        //Activates Press Highlight and moves player
         go_MousePressed.SetActive(true);
 
         MovePlayer();
@@ -88,6 +91,7 @@ public abstract class Tile : MonoBehaviour
     }
 
 
+    //Should only use SetUnit, I will change it to that if I have extra time
     //Sets the Unit to the tile
     public void SetUnit(BaseUnit unit)
     {

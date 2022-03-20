@@ -16,7 +16,7 @@ public class Enemy01 : BaseEnemy
         //Drop Item
     }
 
-
+    //Finds all enemies with the enemy01 script and moves them
     public void MoveEnemy1()
     {
         if (GameManager.Instance.State != GameState.Enemy1Turn) return;
@@ -25,7 +25,7 @@ public class Enemy01 : BaseEnemy
         foreach(Enemy01 obj in list)
         {
             obj.GetComponent<Enemy01>();
-            var nextXTile = GridManager.Instance.GetRandomTileWidth();
+            var nextXTile = GridManager.Instance.GetUpperRandomTile();
 
             nextXTile.SetEnemy1(obj);
         }

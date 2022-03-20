@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour
         Instance = this;
     }
 
+    //When you select a player it shows his info
     public void ShowSelectedPlayer(Player player)
     {
         if (player == null)
@@ -30,6 +31,7 @@ public class MenuManager : MonoBehaviour
         go_SelectedPlayerObject.SetActive(true);
     }
 
+    //Shows the info of the tile, if it has an occupied unit and the tiles coordinates
     public void ShowTileInfo(Tile tile)
     {
         if (tile == null)

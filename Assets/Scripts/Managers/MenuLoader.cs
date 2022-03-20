@@ -14,11 +14,13 @@ public class MenuLoader : MonoBehaviour
         Instance = this;
     }
 
+    //Loads a scene according to name
     public void LoadScene(string scenename)
     {
         SceneManager.LoadScene(scenename);
     }
 
+    //Quits the Game
     public void QuitGame()
     {
         Application.Quit();
