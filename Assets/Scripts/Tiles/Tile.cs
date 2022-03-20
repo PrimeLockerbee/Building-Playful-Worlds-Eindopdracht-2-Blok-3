@@ -45,6 +45,17 @@ public abstract class Tile : MonoBehaviour
     {
         go_MousePressed.SetActive(true);
 
+        MovePlayer();
+
+    }
+
+    private void OnMouseUp()
+    {
+        go_MousePressed.SetActive(false);
+    }
+
+    void MovePlayer()
+    {
         if (GameManager.Instance.State != GameState.PlayerTurn) return;
 
         if (OccupiedUnit != null)
@@ -72,13 +83,25 @@ public abstract class Tile : MonoBehaviour
                 GameManager.Instance.UpdateGameState(GameState.Enemy1Turn);
             }
         }
-
-
     }
 
-    private void OnMouseUp()
+    void MoveEnemy1()
     {
-        go_MousePressed.SetActive(false);
+        if (GameManager.Instance.State != GameState.Enemy1Turn) return;
+
+        //Get Enemy Position
+        //Get tile next to enemy position
+        //tile.SetUnit(Enemy1)
+
+
+        GameManager.Instance.UpdateGameState(GameState.Enemy2Turn);
+    }
+
+    void MoveEnemy2()
+    {
+        if (GameManager.Instance.State != GameState.Enemy2Turn) return;
+
+        GameManager.Instance.UpdateGameState(GameState.Enemy1Turn);
     }
 
     public void SetUnit(BaseUnit unit)

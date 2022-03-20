@@ -37,7 +37,7 @@ public class UnitManager : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        var enemyCount = 10;
+        var enemyCount = 5;
 
         for (int i = 0; i < enemyCount; i++)
         {
