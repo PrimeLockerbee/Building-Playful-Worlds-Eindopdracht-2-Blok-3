@@ -7,11 +7,13 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
 {
     [SerializeField] private Canvas c_Canvas;
 
-    private RectTransform rt_rectTransform;
+    private RectTransform rt_RectTransform;
+    private CanvasGroup cg_CanvasGroup;
 
     private void Awake()
     {
-        rt_rectTransform = GetComponent<RectTransform>();
+        rt_RectTransform = GetComponent<RectTransform>();
+        cg_CanvasGroup = GetComponent<CanvasGroup>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -22,15 +24,19 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("OnBeginDrag");
+        cg_CanvasGroup.alpha = .6f;
+        cg_CanvasGroup.blocksRaycasts = false;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("OnEndDrag");
+        cg_CanvasGroup.alpha = 1f;
+        cg_CanvasGroup.blocksRaycasts = true;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rt_rectTransform.anchoredPosition += eventData.delta/ c_Canvas.scaleFactor;
+        rt_RectTransform.anchoredPosition += eventData.delta/ c_Canvas.scaleFactor;
     }
 }
