@@ -99,3 +99,4 @@ MonoBehaviour:
   MovementRange: 2
   OccupiedTile: {fileID: 0}
   Faction: 1
+  go_ItemDrop: {fileID: 6731782101065125493, guid: 2af2071c6a55f2e45b107e50ddd82746, type: 3}

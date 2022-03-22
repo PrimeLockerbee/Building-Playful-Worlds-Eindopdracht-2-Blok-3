@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy01 : BaseEnemy
 {
@@ -9,11 +10,6 @@ public class Enemy01 : BaseEnemy
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void OnDestroy()
-    {
-        //Drop Item
     }
 
     //Finds all enemies with the enemy01 script and moves them

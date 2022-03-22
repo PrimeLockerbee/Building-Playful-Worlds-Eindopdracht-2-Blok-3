@@ -74,6 +74,8 @@ public abstract class Tile : MonoBehaviour
                 {
                     var enemy = (BaseEnemy)OccupiedUnit;
                     Destroy(enemy.gameObject);
+                    //SpawnItem at enemy.gameObject.transform.position
+                    //Parent it to the canvas
                     UnitManager.Instance.SetSelectedPlayer(null);
                 }
                 GameManager.Instance.UpdateGameState(GameState.Enemy1Turn);

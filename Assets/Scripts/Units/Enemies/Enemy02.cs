@@ -11,11 +11,6 @@ public class Enemy02 : BaseEnemy
         Instance = this;
     }
 
-    private void OnDestroy()
-    {
-        //Drop Item
-    }
-
     //Finds all enemies with the enemy02 script and moves them
     public void MoveEnemy2()
     {
