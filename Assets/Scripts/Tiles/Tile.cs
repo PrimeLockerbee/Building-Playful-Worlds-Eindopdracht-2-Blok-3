@@ -55,7 +55,6 @@ public abstract class Tile : MonoBehaviour
         go_MousePressed.SetActive(true);
 
         MovePlayer();
-
     }
 
     private void OnMouseUp()
