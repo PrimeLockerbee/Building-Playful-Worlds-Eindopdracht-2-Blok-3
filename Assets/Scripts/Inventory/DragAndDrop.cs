@@ -14,6 +14,8 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
     {
         rt_RectTransform = GetComponent<RectTransform>();
         cg_CanvasGroup = GetComponent<CanvasGroup>();
+        GameObject go_CanvasObject = GameObject.Find("Canvas");
+        c_Canvas = go_CanvasObject.GetComponent<Canvas>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -37,6 +39,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
+        
         rt_RectTransform.anchoredPosition += eventData.delta/ c_Canvas.scaleFactor;
     }
 }
