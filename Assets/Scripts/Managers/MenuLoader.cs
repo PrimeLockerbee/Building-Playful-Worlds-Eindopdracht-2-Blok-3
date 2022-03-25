@@ -50,6 +50,15 @@ public class MenuLoader : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+;
+    }
+
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = r_Resolutions[resolutionIndex];
