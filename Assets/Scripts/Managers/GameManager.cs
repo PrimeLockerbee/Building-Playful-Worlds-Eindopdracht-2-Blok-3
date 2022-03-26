@@ -62,14 +62,14 @@ public class GameManager : MonoBehaviour
             case GameState.PlayerTurn:
                 break;
             case GameState.Enemy1Turn:
-                if (Enemy01.Instance == null)
+                if (GameObject.FindGameObjectsWithTag("Enemy01").Length == 0)
                 {
                     UpdateGameState(GameState.Enemy2Turn);
                 }
                 Enemy01.Instance.MoveEnemy1();
                 break;
             case GameState.Enemy2Turn:
-                if (Enemy02.Instance == null)
+                if (GameObject.FindGameObjectsWithTag("Enemy02").Length == 0)
                 {
                     UpdateGameState(GameState.PlayerTurn);
                 }

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class MenuLoader : MonoBehaviour
 {
     public static MenuLoader Instance;

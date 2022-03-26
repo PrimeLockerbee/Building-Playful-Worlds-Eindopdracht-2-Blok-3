@@ -5,6 +5,8 @@ using UnityEngine;
 
 public abstract class Tile : MonoBehaviour
 {
+    public static Tile Instance;
+
     [SerializeField] private GameObject go_HighLight;
     [SerializeField] private GameObject go_MousePressed;
 
@@ -27,6 +29,8 @@ public abstract class Tile : MonoBehaviour
 
     public void Awake()
     {
+        Instance = this;
+
         v2_Coords = new Vector2(transform.position.x, transform.position.y);
         c_Canvas = (Canvas)GameObject.FindObjectOfType(typeof(Canvas));
         go_CanvasObject = c_Canvas.gameObject;
