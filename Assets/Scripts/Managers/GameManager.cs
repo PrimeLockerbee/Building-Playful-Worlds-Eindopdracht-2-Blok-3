@@ -12,7 +12,6 @@ public enum GameState
     PlayerTurn = 3,
     Enemy1Turn = 4,
     Enemy2Turn = 5,
-    Victory = 6,
 }
 
 
@@ -25,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     public static event Action<GameState> OnGameStateChange;
 
+    [SerializeField] GameObject go_VictoryScreen;
+
     private void Awake()
     {
         Instance = this;
@@ -33,6 +34,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         UpdateGameState(GameState.GenerateGrid);
+    }
+
+    private void Update()
+    {
+        if (GameObject.FindGameObjectsWithTag("Enemy01").Length == 0 && GameObject.FindGameObjectsWithTag("Enemy02").Length == 0)
+        {
+            go_VictoryScreen.SetActive(true);
+        }
     }
 
     public void UpdateGameState(GameState newState)
@@ -66,22 +75,10 @@ public class GameManager : MonoBehaviour
                 }
                 Enemy02.Instance.MoveEnemy2();
                 break;
-            case GameState.Victory:
-                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
 
         OnGameStateChange?.Invoke(newState);
-    }
-
-    private void Save()
-    {
-
-    }
-
-    private void Load()
-    {
-
     }
 }

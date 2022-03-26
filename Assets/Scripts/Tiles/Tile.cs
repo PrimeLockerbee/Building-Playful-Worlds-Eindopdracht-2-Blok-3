@@ -16,6 +16,8 @@ public abstract class Tile : MonoBehaviour
     [SerializeField] private Canvas c_Canvas;
     [SerializeField] private GameObject go_CanvasObject;
 
+    [SerializeField] private GameObject go_ItemParent;
+
     public string TileName;
 
     public Vector2 v2_Coords;
@@ -28,6 +30,8 @@ public abstract class Tile : MonoBehaviour
         v2_Coords = new Vector2(transform.position.x, transform.position.y);
         c_Canvas = (Canvas)GameObject.FindObjectOfType(typeof(Canvas));
         go_CanvasObject = c_Canvas.gameObject;
+
+        go_ItemParent = GameObject.Find("ItemParent");
     }
 
     public virtual void Init(int x, int y)
@@ -80,8 +84,10 @@ public abstract class Tile : MonoBehaviour
                     var enemy = (BaseEnemy)OccupiedUnit;
                     Destroy(enemy.gameObject);
                     GameObject go_ItemDrops = Instantiate(go_ItemDrop, enemy.gameObject.transform.position, Quaternion.identity) as GameObject;
-                    go_ItemDrops.transform.SetParent(go_CanvasObject.transform, false);
-                    
+                    //go_ItemDrops.transform.SetParent(go_CanvasObject.transform, false);
+
+                    go_ItemDrops.transform.SetParent(go_ItemParent.transform, false);
+
                     UnitManager.Instance.SetSelectedPlayer(null);
                 }
                 GameManager.Instance.UpdateGameState(GameState.Enemy1Turn);
