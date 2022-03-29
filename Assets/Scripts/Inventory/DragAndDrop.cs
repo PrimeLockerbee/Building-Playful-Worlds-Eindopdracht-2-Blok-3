@@ -24,6 +24,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         Debug.Log("OnPointerDown");
     }
 
+    //Enables item dragging, changes the alpha and disables the raycast block
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("OnBeginDrag");
@@ -31,6 +32,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         cg_CanvasGroup.blocksRaycasts = false;
     }
 
+    //Restores the alpha and raycast blocks
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("OnEndDrag");
@@ -38,6 +40,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         cg_CanvasGroup.blocksRaycasts = true;
     }
 
+    //Compensates the position while dragging an item
     public void OnDrag(PointerEventData eventData)
     {        
         rt_RectTransform.anchoredPosition += eventData.delta/ c_Canvas.scaleFactor;

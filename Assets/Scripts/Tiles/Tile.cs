@@ -7,18 +7,20 @@ public abstract class Tile : MonoBehaviour
 {
     public static Tile Instance;
 
+    //Highlight variables
     [SerializeField] private GameObject go_HighLight;
     [SerializeField] private GameObject go_MousePressed;
-
-    [SerializeField] protected SpriteRenderer sr_Renderer;
-
-    [SerializeField] private bool b_isWalkable;
-
+    
+    //Item variables
     [SerializeField] private GameObject go_ItemDrop;
+    [SerializeField] private GameObject go_ItemParent;
     [SerializeField] private Canvas c_Canvas;
     [SerializeField] private GameObject go_CanvasObject;
 
-    [SerializeField] private GameObject go_ItemParent;
+    //Tile Variables
+    [SerializeField] private bool b_isWalkable;
+
+    public SpriteRenderer sr_Renderer;
 
     public string TileName;
 
@@ -26,6 +28,8 @@ public abstract class Tile : MonoBehaviour
 
     public BaseUnit OccupiedUnit;
     public bool b_Walkable => b_isWalkable && OccupiedUnit == null;
+
+
 
     public void Awake()
     {
@@ -67,6 +71,7 @@ public abstract class Tile : MonoBehaviour
 
     private void OnMouseUp()
     {
+        //Deactivates the Highlight
         go_MousePressed.SetActive(false);
     }
 
@@ -88,7 +93,6 @@ public abstract class Tile : MonoBehaviour
                     var enemy = (BaseEnemy)OccupiedUnit;
                     Destroy(enemy.gameObject);
                     GameObject go_ItemDrops = Instantiate(go_ItemDrop, enemy.gameObject.transform.position, Quaternion.identity) as GameObject;
-                    //go_ItemDrops.transform.SetParent(go_CanvasObject.transform, false);
 
                     go_ItemDrops.transform.SetParent(go_ItemParent.transform, false);
 

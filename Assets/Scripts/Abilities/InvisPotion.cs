@@ -18,21 +18,22 @@ public class InvisPotion : MonoBehaviour
 
     public void InvisActivate()
     {
+        //Activates the invisible effect by changing the alpha of the sprite
         if(b_isInvis == false)
         {
             Color c_temp = sr_PlayerRenderer.color;
             c_temp.a = .5f;
             sr_PlayerRenderer.color = c_temp;
 
-            StartCoroutine(LockInvis());
+            StartCoroutine(InvisTimer());
             StartCoroutine(LockButton());
         }
     }
 
-    IEnumerator LockInvis()
+    //Activates and deactivates the invisible effect
+    IEnumerator InvisTimer()
     {
         b_isInvis = true;
-
 
         yield return new WaitForSeconds(5);
 
@@ -40,11 +41,10 @@ public class InvisPotion : MonoBehaviour
         c_temp.a = 1f;
         sr_PlayerRenderer.color = c_temp;
 
-
-
         b_isInvis = false;
     }
 
+    //Locks the invisible ability buttons for 15 seconds
     IEnumerator LockButton()
     {
         b_InvisButton.interactable = false;

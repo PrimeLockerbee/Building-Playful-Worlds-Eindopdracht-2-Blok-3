@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//The two available factions
 public enum Faction
 {
     Player = 0,
     Enemy = 1
 }
 
+//Creates an asset menu for my scriptable units
 [CreateAssetMenu(fileName = "New Unit", menuName = "Scriptable Unit")]
 public class ScriptableUnit : ScriptableObject
 {

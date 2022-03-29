@@ -12,10 +12,12 @@ public class UnitManager : MonoBehaviour
     private List<Enemy01> l_Enemy01;
 
     public Player SelectedPlayer;
+
     void Awake()
     {
         Instance = this;
 
+        //Loads all scriptable units into a list
         l_units = Resources.LoadAll<ScriptableUnit>("Units").ToList();
 
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseUnit : MonoBehaviour
 {
-    //Info All units have acces to
+    //Info all the units from any faction can use
     public string UnitName;
     public int MovementRange;
     public Tile OccupiedTile;

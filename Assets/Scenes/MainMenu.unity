@@ -844,7 +844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9061573070435485977, guid: c4d38641c3caf3c4b926ab474233e802, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadPlayer
+      value: LoadGrid
       objectReference: {fileID: 0}
     - target: {fileID: 9061573070435485977, guid: c4d38641c3caf3c4b926ab474233e802, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

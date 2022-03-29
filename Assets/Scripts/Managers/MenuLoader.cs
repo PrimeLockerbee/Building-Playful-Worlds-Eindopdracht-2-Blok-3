@@ -27,12 +27,13 @@ public class MenuLoader : MonoBehaviour
 
     private void Start()
     {
+        //Loads all available screen resolutions into the dropdown menu
+
         r_Resolutions = Screen.resolutions;
 
         dd_DropDown.ClearOptions();
 
         List<string> _options = new List<string>();
-
 
         for (int i = 0; i< r_Resolutions.Length; i++)
         {
@@ -53,29 +54,33 @@ public class MenuLoader : MonoBehaviour
 
     private void Update()
     {
+        //Use the escape key to quit the game at any time
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             Application.Quit();
         }
-;
     }
 
+    //Sets the resolution of your screen
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = r_Resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
+    //Uses an audiomixer to set the volume of all used sounds
     public void SetVolume(float volume)
     {
         am_AudioMixer.SetFloat("volume", volume);
     }
 
+    //Sets the quality using all available options from the quality screen
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
     }
 
+    //Toggles between fullscreen
     public void SetFullScreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
@@ -91,5 +96,19 @@ public class MenuLoader : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    //Uses the save system to save the scene number
+    public void SaveGrid()
+    {
+        SaveSystem.SaveSceneNumber();
+    }
+
+    //Loads the scene number from the save file and loads the corresponding scene
+    public void LoadGrid()
+    {
+       SaveData data = SaveSystem.LoadSceneNumber();
+
+       SceneManager.LoadScene(data._sceneNumber);
     }
 }

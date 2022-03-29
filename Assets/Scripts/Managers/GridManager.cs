@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class GridManager : MonoBehaviour
 {
@@ -10,8 +11,8 @@ public class GridManager : MonoBehaviour
 
     [SerializeField] private Tile _GrassTile;
 
-    [SerializeField] private int _width;
-    [SerializeField] private int _height;
+    [SerializeField] public int _width;
+    [SerializeField] public int _height;
 
     private Dictionary<Vector2, Tile> d_tiles;
 

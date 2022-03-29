@@ -9,25 +9,27 @@ public class Player : BaseUnit
     [SerializeField] Sprite s_BaseSprite;
     [SerializeField] Sprite s_SwordEquipSprite;
 
-    [SerializeField] GameObject i_SwordImage;
+    [SerializeField] GameObject go_SwordImage;
 
     private void Start()
     {
         sr_PlayerRenderer = GetComponent<SpriteRenderer>();
-        i_SwordImage = GameObject.Find("Sword");
+        go_SwordImage = GameObject.Find("Sword");
     }
 
     private void Update()
     {
         if (Input.GetKey(KeyCode.O))
         {
+            //Equips the weapon
             sr_PlayerRenderer.sprite = s_SwordEquipSprite;
-            i_SwordImage.SetActive(false);
+            go_SwordImage.SetActive(false);
         }
         if (Input.GetKey(KeyCode.P))
         {
+            //Dequips weapon
             sr_PlayerRenderer.sprite = s_BaseSprite;
-            i_SwordImage.SetActive(true);
+            go_SwordImage.SetActive(true);
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+//All possible game states
 public enum GameState
 {
     GenerateGrid = 0,
@@ -33,17 +34,20 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        //Generates the grid on start
         UpdateGameState(GameState.GenerateGrid);
     }
 
     private void Update()
     {
+        //Check if all enemy tags are gone and the activates the win screen
         if (GameObject.FindGameObjectsWithTag("Enemy01").Length == 0 && GameObject.FindGameObjectsWithTag("Enemy02").Length == 0)
         {
             go_VictoryScreen.SetActive(true);
         }
     }
 
+    //Updates the game state using a switch
     public void UpdateGameState(GameState newState)
     {
         State = newState;
